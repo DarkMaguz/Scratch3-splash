@@ -8,16 +8,13 @@
 #include "MainWindow.h"
 #include <gtkmm-3.0/gtkmm/window.h>
 
-#include <sys/types.h>
-#include <sys/socket.h>
-
 void thread(MainWindow *mw)
 {
 	
 	sleep(3);
 	
-	boost::asio::io_context::count_type count = 0;
-	while (count < 7 && count != -1)
+	boost::asio::io_context::count_type count = -2;
+	for (int i = 0; i < 10; ++i) 
 	{
 		try
 		{
@@ -29,6 +26,14 @@ void thread(MainWindow *mw)
 			std::cout << "Exception: " << e.what() << "\n";
 			count = -1;
 		}
+		if (count >= 6 || count == -1)
+			break;
+		if (!mw)
+		{
+			std::cout << "Error: Terminating." << count << std::endl;
+			exit(1);
+		}
+		sleep(1);
 	}
 	
 	std::cout << "Done1!" << count << std::endl;
@@ -36,7 +41,7 @@ void thread(MainWindow *mw)
 }
 
 MainWindow::MainWindow() :
-		m_splashImage("/home/peter/Development/workspace-cdt-oxygen/Scratch3-splash/src/scratch.jpg")
+		m_splashImage("scratch.jpg")
 //	m_addrInfo(NULL),
 //	m_sockFD(0)
 //	m_curl(curl_easy_init())
