@@ -5,3 +5,7 @@ s3splash_CPPFLAGS=$(GTKMM_CFLAGS)
 #$(CURL_CFLAGS)
 s3splash_LDADD=$(GTKMM_LIBS) -lboost_system -lpthread -lboost_thread
 #$(CURL_LIBS) 
+
+imagedatadir = $(s3splashdatadir)/images
+imagedata_DATA = scratch.jpg
+EXTRA_DIST = $(imagedata_DATA)
