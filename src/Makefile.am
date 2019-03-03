@@ -1,11 +1,11 @@
+imagedatadir = $(datadir)/$(PACKAGE)/images
+imagedata_DATA = scratch.jpg
+EXTRA_DIST = $(imagedata_DATA)
+
 bin_PROGRAMS=s3splash
 
 s3splash_SOURCES=main.cpp MainWindow.cpp TcpClient.cpp
-s3splash_CPPFLAGS=$(GTKMM_CFLAGS)
+s3splash_CPPFLAGS=$(GTKMM_CFLAGS) -DIMAGE_DATA_DIR=\"$(imagedatadir)\"
 #$(CURL_CFLAGS)
 s3splash_LDADD=$(GTKMM_LIBS) -lboost_system -lpthread -lboost_thread
 #$(CURL_LIBS) 
-
-imagedatadir = $(s3splashdatadir)/images
-imagedata_DATA = scratch.jpg
-EXTRA_DIST = $(imagedata_DATA)

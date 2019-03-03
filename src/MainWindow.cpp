@@ -41,12 +41,12 @@ void thread(MainWindow *mw)
 }
 
 MainWindow::MainWindow() :
-		m_splashImage("scratch.jpg")
+		m_splashImage(std::string(IMAGE_DATA_DIR) + "/scratch.jpg")
 //	m_addrInfo(NULL),
 //	m_sockFD(0)
 //	m_curl(curl_easy_init())
 {
-	
+	std::cout << std::string(IMAGE_DATA_DIR) + "/scratch.jpg" << std::endl;
 	set_size_request(800, 600);
 	add(m_splashImage);
 	//fullscreen();
