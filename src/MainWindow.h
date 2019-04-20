@@ -15,8 +15,6 @@
 
 #include <boost/thread.hpp>
 
-#include "TcpClient.h"
-
 class MainWindow;
 
 void thread(MainWindow *mw);
@@ -37,8 +35,6 @@ private:
 	
 	Gtk::ProgressBar m_FirstProgressBar;
 	Gtk::ProgressBar m_SecondProgressBar;
-	
-	//CURL *m_curl;
 	
 	boost::thread m_Thread;
 	
