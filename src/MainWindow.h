@@ -11,10 +11,10 @@
 #include <gtkmm-3.0/gtkmm.h>
 #include <gtkmm-3.0/gtkmm/image.h>
 
+#define CON_ATTEMPT 30
 
 #include <boost/thread.hpp>
 
-//#include <curl/curl.h>
 #include "TcpClient.h"
 
 class MainWindow;
@@ -26,19 +26,21 @@ public:
 	MainWindow();
 	virtual ~MainWindow();
 	
-	/*typedef sigc::signal<void, bool, int> siganelConnected_t;
-	siganelConnected_t signalConnected(void);
-	
-protected:
-	siganelConnected_t m_siganelConnected;*/
+	void UpdateProgress(const int& bar, const double& fraction);
+	void UpdateStatus(const int& bar, const std::string& status);
 	
 private:
-	Gtk::Image m_splashImage;
-	//CURL *m_curl;
-	//addrinfo *m_addrInfo;
-	//int m_sockFD;
+	Gtk::Layout m_Layout;
+	Gtk::VBox m_MainVBox;
+	Gtk::HBox m_MainHBox;
+	Gtk::Image m_SplashImage;
 	
-	boost::thread m_thread;
+	Gtk::ProgressBar m_FirstProgressBar;
+	Gtk::ProgressBar m_SecondProgressBar;
+	
+	//CURL *m_curl;
+	
+	boost::thread m_Thread;
 	
 };
 
