@@ -82,7 +82,7 @@ void create_container(void)
 	
 	curl = curl_easy_init();
 	curl_easy_setopt(curl, CURLOPT_URL, "http:/v1.30/containers/create?name=scratch3");
-	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{\"Image\": \"darkmagus/scratch3\", \"PortBindings\":{\"80/tcp\":[{\"HostIp\":\"\",\"HostPort\":\"8601\"}]}}");
+	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "{'Image': 'darkmagus/scratch3', 'PortBindings':{'80/tcp':[{'HostIp':'','HostPort':'8601'}]}}");
 	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist1);
 	curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_easy_setopt(curl, CURLOPT_UNIX_SOCKET_PATH, "/var/run/docker.sock");
